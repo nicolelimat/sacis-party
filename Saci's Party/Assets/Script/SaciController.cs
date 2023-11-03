@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,14 @@ public class SaciController : MonoBehaviour
     float invincibleTimer;
     float horizontal; 
     float vertical;
+    bool isDead;
+    float deathAnimationDuration = 2.5f;
 
     Rigidbody2D rigidbody2d;
     Animator animator;
     Vector2 lookDirection = new Vector2(1,0);
+
+    public static event Action OnPlayerDeath; // Por ser estático e público, pode ser referenciado em outros scripts
 
     
 
@@ -74,21 +79,45 @@ public class SaciController : MonoBehaviour
         position.x = position.x + speed * horizontal * Time.deltaTime;
         position.y = position.y + speed * vertical * Time.deltaTime;
 
-        rigidbody2d.MovePosition(position);
+        if(isDead == false)
+        {
+            rigidbody2d.MovePosition(position);
+        }
     }
 
     public void ChangeHealth(int amount)
     {
         if (amount < 0)
         {
-            if (isInvincible)
+            if (isInvincible) // Se estiver invencível, sai da função sem tomar dano
                 return;
             
-            isInvincible = true;
+            isInvincible = true; // Senão, se torna invencível por X sec e toma dano
             invincibleTimer = timeInvincible;
         }
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
+
+        if(isDead == false && currentHealth == 0){
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Debug.Log("You're dead!");
+        isDead = true;
+        animator.SetTrigger("Death");
+        // rigidbody2d.bodyType = RigidbodyType2D.Static;
+    
+        // Aguardar a duração da animação de morte antes de mostrar o painel de game over
+        StartCoroutine(ShowGameOverAfterDeathAnimation());
+    }
+
+    IEnumerator ShowGameOverAfterDeathAnimation()
+    {
+        yield return new WaitForSeconds(deathAnimationDuration);
+        OnPlayerDeath?.Invoke();
     }
 }
