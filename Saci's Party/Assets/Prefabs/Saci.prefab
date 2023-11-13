@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8985913835395751046}
   m_Layer: 0
   m_Name: Saci
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d69bf9a147b6e485eb3426396b5a9ddd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8baa4e1591a724b9b9e706c8e5ae0417, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a78f55dfdf84edb9b414f64e31b085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  maxHealth: 5
+  speed: 2
+  maxHealth: 1
   timeInvincible: 2
 --- !u!50 &4511030291074476284
 Rigidbody2D:
@@ -162,6 +162,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
+
   m_Offset: {x: -0.027416945, y: 0.08660492}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,6 +174,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
+
   m_Size: {x: 0.53889894, y: 0.8275052}
   m_EdgeRadius: 0
 --- !u!95 &8985913835395751046
