@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class EsqueletoBehavior : MonoBehaviour
 {
-    public float speed = 2.0f;
+    public float speed = 0.0f;
     public bool vertical;
     public float changeTime = 3.0f;
 
     new Rigidbody2D rigidbody2D;
     float timer;
     int direction = 1;
+
+    public GameObject Flecha;
+    float atackTimer = 2.0f;
     
     Animator animator;
     
@@ -20,6 +23,7 @@ public class EsqueletoBehavior : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
+        
     }
 
     void Update()
@@ -30,6 +34,15 @@ public class EsqueletoBehavior : MonoBehaviour
         {
             direction = -direction;
             timer = changeTime;
+        }
+
+        
+
+        if(atackTimer<0){
+            GameObject novoProjetil = Instantiate(Flecha, transform.position ,Quaternion.identity);
+            atackTimer = 2.0f;
+        }else{
+            atackTimer -= Time.deltaTime;
         }
     }
     
