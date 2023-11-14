@@ -2,15 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaciController : MonoBehaviour
 {
     public float speed = 3.0f;
-    public int maxHealth = 5;
+    public int maxHealth = 6;
+    public static int currentHealth;
     public float timeInvincible = 2.0f;
-    public int health { get { return currentHealth; }}
+    // public int health { get { return currentHealth; }}
 
-    int currentHealth;
     bool isInvincible;
     float invincibleTimer;
     float horizontal; 
@@ -24,7 +25,7 @@ public class SaciController : MonoBehaviour
 
     public static event Action OnPlayerDeath; // Por ser estático e público, pode ser referenciado em outros scripts
 
-    
+
 
     // Start is called before the first frame update
     void Start()
