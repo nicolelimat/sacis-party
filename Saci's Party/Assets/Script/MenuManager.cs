@@ -9,10 +9,11 @@ public class MenuManager : MonoBehaviour
     public GameObject gameOverMenu;
     public CanvasGroup gameOverCanvasGroup;
     bool isPaused;
-    bool isOver;
+    public static bool isOver;
 
     void Start()
     {
+        isOver = false;
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);
         gameOverCanvasGroup.alpha = 0; // Painel de game over totalmente transparente
@@ -49,7 +50,7 @@ public class MenuManager : MonoBehaviour
     public void EnableGameOverMenu()
     {
         gameOverMenu.SetActive(true);
-
+        isOver = true;
         // Efeito de fade-in gradual
         StartCoroutine(FadeInGameOverPanel());
     }

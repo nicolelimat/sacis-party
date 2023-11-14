@@ -15,14 +15,19 @@ public class InicialMenuController : MonoBehaviour
             // Application.Quit();
         } 
 
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            return;
+        } 
+
         if (Input.anyKeyDown)
         {
-          SceneManager.LoadScene("SampleScene");
+          StartGame();
         }
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(1);
     }
 }
