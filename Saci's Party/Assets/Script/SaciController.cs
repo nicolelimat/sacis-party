@@ -8,12 +8,9 @@ public class SaciController : MonoBehaviour
 {
     public float speed = 3.0f;
     public int maxHealth = 6;
-    public int currentHealth;
+    public static int currentHealth;
     public float timeInvincible = 2.0f;
     // public int health { get { return currentHealth; }}
-    public Image[] hearts;
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
 
     bool isInvincible;
     float invincibleTimer;
@@ -74,16 +71,6 @@ public class SaciController : MonoBehaviour
             if (invincibleTimer < 0)
                 isInvincible = false;
             
-        }
-
-        // Mudando os sprites de corações
-        foreach (Image img in hearts)
-        {
-            img.sprite = emptyHeart;   
-        }
-        for (int i = 0; i < currentHealth; i++)
-        {
-            hearts[i].sprite = fullHeart;
         }
     }
 
