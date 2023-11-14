@@ -2,15 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaciController : MonoBehaviour
 {
     public float speed = 3.0f;
-    public int maxHealth = 5;
+    public int maxHealth = 6;
+    public int currentHealth;
     public float timeInvincible = 2.0f;
-    public int health { get { return currentHealth; }}
+    // public int health { get { return currentHealth; }}
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
-    int currentHealth;
     bool isInvincible;
     float invincibleTimer;
     float horizontal; 
@@ -24,7 +28,7 @@ public class SaciController : MonoBehaviour
 
     public static event Action OnPlayerDeath; // Por ser estático e público, pode ser referenciado em outros scripts
 
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +74,16 @@ public class SaciController : MonoBehaviour
             if (invincibleTimer < 0)
                 isInvincible = false;
             
+        }
+
+        // Mudando os sprites de corações
+        foreach (Image img in hearts)
+        {
+            img.sprite = emptyHeart;   
+        }
+        for (int i = 0; i < currentHealth; i++)
+        {
+            hearts[i].sprite = fullHeart;
         }
     }
 
