@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class SaciController : MonoBehaviour
 {
     public float speed = 3.0f;
-    public int maxHealth = 6;
     public static int currentHealth;
-    public float timeInvincible = 2.0f;
-    // public int health { get { return currentHealth; }}
+    public float timeInvincible = 3.0f;
+    public int health;
 
+    int maxHealth = 6;
     bool isInvincible;
     float invincibleTimer;
     float horizontal; 
@@ -31,13 +31,14 @@ public class SaciController : MonoBehaviour
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
+        health = maxHealth;
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentHealth = health;
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
@@ -65,12 +66,16 @@ public class SaciController : MonoBehaviour
         animator.SetFloat("Look X", lookDirection.x);
         animator.SetFloat("Speed", move.magnitude);
 
-        if (isInvincible)
+        if (isInvincible && !isDead)
         {
+            GetComponent<Animator>().SetLayerWeight(1,1);
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
+            {
+                GetComponent<Animator>().SetLayerWeight(1,0);
                 isInvincible = false;
-            
+            }
+                
         }
     }
 
@@ -97,10 +102,10 @@ public class SaciController : MonoBehaviour
             invincibleTimer = timeInvincible;
         }
         
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log(currentHealth + "/" + maxHealth);
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+        Debug.Log(health + "/" + maxHealth);
 
-        if(isDead == false && currentHealth == 0){
+        if(isDead == false && health == 0){
             Die();
         }
     }
