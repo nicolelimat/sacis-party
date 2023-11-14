@@ -22,5 +22,10 @@ public class AudioController : MonoBehaviour
         {
             audioSource.mute = !audioSource.mute;    
         } 
+
+        if(MenuManager.isOver)
+        {
+            audioSource.Stop();
+        }
     }
 }
