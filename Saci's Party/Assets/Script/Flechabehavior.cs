@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileBehavior : MonoBehaviour
+public class FlechaBehavior : MonoBehaviour
 {
 
     public Vector3 direction;         //Transform do objeto que será seguido
