@@ -2,14 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaciController : MonoBehaviour
 {
     public float speed = 3.0f;
-    public int maxHealth = 5;
-    public float timeInvincible = 2.0f;
-    public int health { get { return currentHealth; }}
+    public int health;
+    public static int currentHealth;
+    public float timeInvincible = 3.0f;
 
++
     public GameObject Tornado;
 
     int currentHealth;
@@ -29,19 +31,20 @@ public class SaciController : MonoBehaviour
 
     public static event Action OnPlayerDeath; // Por ser estático e público, pode ser referenciado em outros scripts
 
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
+        health = maxHealth;
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentHealth = health;
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
@@ -69,12 +72,16 @@ public class SaciController : MonoBehaviour
         animator.SetFloat("Look X", lookDirection.x);
         animator.SetFloat("Speed", move.magnitude);
 
-        if (isInvincible)
+        if (isInvincible && !isDead)
         {
+            GetComponent<Animator>().SetLayerWeight(1,1);
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
+            {
+                GetComponent<Animator>().SetLayerWeight(1,0);
                 isInvincible = false;
-            
+            }
+                
         }
 
         if(canAttack && enemiesInRange > 0){
@@ -106,10 +113,10 @@ public class SaciController : MonoBehaviour
             invincibleTimer = timeInvincible;
         }
         
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log(currentHealth + "/" + maxHealth);
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+        Debug.Log(health + "/" + maxHealth);
 
-        if(isDead == false && currentHealth == 0){
+        if(isDead == false && health == 0){
             Die();
         }
     }

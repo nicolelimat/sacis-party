@@ -27,6 +27,6 @@ public class PauseMenuController : MonoBehaviour
 
     public void Sound()
     {
-    
+        AudioController.audioSource.mute = !AudioController.audioSource.mute;    
     }
 }
