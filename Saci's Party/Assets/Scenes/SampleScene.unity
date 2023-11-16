@@ -774,6 +774,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Saci
       objectReference: {fileID: 0}
+    - target: {fileID: 6762526628202685774, guid: f088cd17deaca422ab5f8fd4dab84471, type: 3}
+      propertyPath: maxHealth
+      value: 99999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -784,8 +788,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 567497476}
   - {fileID: 3840543686417773563}
   - {fileID: 2080634552}
   - {fileID: 778933228}
-  - {fileID: 567497476}
   - {fileID: 1117514353683767060}
