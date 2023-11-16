@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8923063355402549206}
   - component: {fileID: 8363325286871964751}
   m_Layer: 0
-  m_Name: Fantasma
+  m_Name: fantasma
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,3 +196,4 @@ MonoBehaviour:
   speed: 2
   vertical: 0
   changeTime: 3
+  health: 5
