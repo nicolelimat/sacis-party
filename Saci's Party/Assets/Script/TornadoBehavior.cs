@@ -61,6 +61,12 @@ public class TornadoBehavior : MonoBehaviour
                 speed -= speed;
                 Destroy(gameObject);
             }
+            if(other.gameObject.GetComponent<MorcegoBehavior>() != null){
+                MorcegoBehavior target = other.GetComponent<MorcegoBehavior >();
+                target.Hurt(-1);
+                speed -= speed;
+                Destroy(gameObject);
+            }
             
         }
         
