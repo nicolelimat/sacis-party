@@ -11,10 +11,8 @@ public class SaciController : MonoBehaviour
     public static int currentHealth;
     public float timeInvincible = 3.0f;
 
-+
     public GameObject Tornado;
 
-    int currentHealth;
     bool isInvincible;
     float invincibleTimer;
     float horizontal; 
@@ -28,6 +26,8 @@ public class SaciController : MonoBehaviour
     Rigidbody2D rigidbody2d;
     Animator animator;
     Vector2 lookDirection = new Vector2(1,0);
+
+    public int maxHealth = 5;
 
     public static event Action OnPlayerDeath; // Por ser estático e público, pode ser referenciado em outros scripts
 
