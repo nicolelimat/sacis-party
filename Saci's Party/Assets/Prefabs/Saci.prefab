@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4511030291074476284}
   - component: {fileID: 9136575271345448773}
   - component: {fileID: 8985913835395751046}
+  - component: {fileID: 5046546210583736319}
   m_Layer: 0
   m_Name: Saci
   m_TagString: Player
@@ -101,8 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  maxHealth: 2
+  maxHealth: 6666
   timeInvincible: 2
+  Tornado: {fileID: 2379387386464611519, guid: 3afc7c5487268334f87320e509bbfb39, type: 3}
 --- !u!50 &4511030291074476284
 Rigidbody2D:
   serializedVersion: 4
@@ -196,3 +198,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &5046546210583736319
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014859729223134041}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.06403828, y: 0.000019073486}
+  serializedVersion: 2
+  m_Radius: 5

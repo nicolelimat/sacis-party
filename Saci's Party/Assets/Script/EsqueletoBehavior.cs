@@ -14,7 +14,9 @@ public class EsqueletoBehavior : MonoBehaviour
     int direction = 1;
 
     public GameObject Flecha;
-    float atackTimer = 2.0f;
+    bool canAttack = true;
+
+    float range = 7f;
     
     Animator animator;
     
@@ -37,13 +39,8 @@ public class EsqueletoBehavior : MonoBehaviour
             timer = changeTime;
         }
 
-        
-
-        if(atackTimer<0){
-            GameObject novoProjetil = Instantiate(Flecha, transform.position ,Quaternion.identity);
-            atackTimer = 2.0f;
-        }else{
-            atackTimer -= Time.deltaTime;
+        if(canAttack){
+            StartCoroutine(AttackCoroutine());
         }
     }
     
@@ -81,5 +78,35 @@ public class EsqueletoBehavior : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    IEnumerator AttackCoroutine()
+    {
+        if(saciInRange()){
+            
+            GameObject novoProjetil = Instantiate(Flecha, transform.position ,Quaternion.identity);
+
+            canAttack = false; // Impede novos ataques temporariamente
+
+            yield return new WaitForSeconds(4f); 
+
+            canAttack = true; // Permite novos ataques após o intervalo
+        }
+    }
+
+    private bool saciInRange()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+        if(distance <= range){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+
+    
+
+    
 }
 
