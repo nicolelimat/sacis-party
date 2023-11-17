@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level.unity
     guid: 4c874765caceb423cad3c58bb51fe83d
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/WinGame.unity
     guid: b106a221c6d38400faad88e3d68fa579
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
