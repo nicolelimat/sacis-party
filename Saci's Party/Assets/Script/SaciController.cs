@@ -11,7 +11,7 @@ public class SaciController : MonoBehaviour
     public static int currentHealth;
     public float timeInvincible = 3.0f;
 
-    int maxHealth = 6;
+    public GameObject Tornado;
     bool isInvincible;
     float invincibleTimer;
     float horizontal; 
@@ -19,9 +19,14 @@ public class SaciController : MonoBehaviour
     bool isDead;
     float deathAnimationDuration = 2.5f;
 
+    bool canAttack = true;
+    int enemiesInRange = 0;
+
     Rigidbody2D rigidbody2d;
     Animator animator;
     Vector2 lookDirection = new Vector2(1,0);
+
+    public int maxHealth = 5;
 
     public static event Action OnPlayerDeath; // Por ser estático e público, pode ser referenciado em outros scripts
 
@@ -77,6 +82,11 @@ public class SaciController : MonoBehaviour
             }
                 
         }
+
+        if(canAttack && enemiesInRange > 0){
+            StartCoroutine(AttackCoroutine());
+        }
+
     }
 
     void FixedUpdate()
@@ -125,5 +135,34 @@ public class SaciController : MonoBehaviour
     {
         yield return new WaitForSeconds(deathAnimationDuration);
         OnPlayerDeath?.Invoke();
+    }
+
+    IEnumerator AttackCoroutine()
+    {
+        // Realiza a lógica de ataque aqui
+        GameObject novoProjetil = Instantiate(Tornado, transform.position ,Quaternion.identity);
+
+        canAttack = false; // Impede novos ataques temporariamente
+
+        yield return new WaitForSeconds(1.5f); // Espera 1 segundo
+
+        canAttack = true; // Permite novos ataques após o intervalo
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            enemiesInRange ++;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            enemiesInRange --;
+
+        }
     }
 }
