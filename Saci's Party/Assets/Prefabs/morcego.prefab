@@ -175,7 +175,7 @@ MonoBehaviour:
   speed: 5
   vertical: 0
   changeTime: 3
-  health: 2
+  health: 3
 --- !u!95 &5417999955984890727
 Animator:
   serializedVersion: 5
