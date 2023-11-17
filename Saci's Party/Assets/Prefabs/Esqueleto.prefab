@@ -196,5 +196,5 @@ MonoBehaviour:
   speed: 0
   vertical: 1
   changeTime: 3
-  health: 6
+  health: 4
   Flecha: {fileID: 8743226296133048091, guid: 0af954497d560de44a1995667168a43d, type: 3}

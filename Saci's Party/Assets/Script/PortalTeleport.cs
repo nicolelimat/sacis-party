@@ -35,7 +35,7 @@ public class PortalTeleport : MonoBehaviour
     public void LetsGo()
     {
         SceneManager.LoadScene("Level");
-        Time.timeScale = 0;
+        Time.timeScale = 1;
     }
 
     public void No()

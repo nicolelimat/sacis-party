@@ -10,15 +10,16 @@ public class SaciController : MonoBehaviour
     public int health;
     public static int currentHealth;
     public float timeInvincible = 3.0f;
-
     public GameObject Tornado;
+    public AudioSource audioS;
+    public AudioClip[] Sounds;
+
     bool isInvincible;
     float invincibleTimer;
     float horizontal; 
     float vertical;
     bool isDead;
     float deathAnimationDuration = 2.5f;
-
     bool canAttack = true;
     int enemiesInRange = 0;
 
@@ -110,6 +111,8 @@ public class SaciController : MonoBehaviour
             
             isInvincible = true; // Senão, se torna invencível por X sec e toma dano
             invincibleTimer = timeInvincible;
+            audioS.clip = Sounds[1];
+            audioS.Play();
         }
         
         health = Mathf.Clamp(health + amount, 0, maxHealth);
@@ -141,6 +144,9 @@ public class SaciController : MonoBehaviour
     {
         // Realiza a lógica de ataque aqui
         GameObject novoProjetil = Instantiate(Tornado, transform.position ,Quaternion.identity);
+        audioS.clip = Sounds[0];
+        audioS.Play();
+        
 
         canAttack = false; // Impede novos ataques temporariamente
 
