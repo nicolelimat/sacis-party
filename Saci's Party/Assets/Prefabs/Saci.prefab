@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8baa4e1591a724b9b9e706c8e5ae0417, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.509434, g: 0.49261305, b: 0.49261305, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,10 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a78f55dfdf84edb9b414f64e31b085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  maxHealth: 6666
+  speed: 4
+  health: 6
   timeInvincible: 2
   Tornado: {fileID: 2379387386464611519, guid: 3afc7c5487268334f87320e509bbfb39, type: 3}
+  maxHealth: 6
 --- !u!50 &4511030291074476284
 Rigidbody2D:
   serializedVersion: 4
@@ -164,7 +165,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.05561042, y: 0.1612702}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.525494, y: 0.1295942}
@@ -175,7 +176,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5996051, y: 0.6774596}
   m_EdgeRadius: 0
 --- !u!95 &8985913835395751046
 Animator:

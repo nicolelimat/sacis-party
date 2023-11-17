@@ -62,6 +62,10 @@ public class FlechaBehavior : MonoBehaviour
             player.ChangeHealth(-1);
             speed -= speed;
         }
+        if(other.tag == "Wall"){
+            animator.SetBool("IsHit",true);
+            speed -= speed;
+        }
     }
 
     void finalizar(){

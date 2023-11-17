@@ -6,13 +6,12 @@ using UnityEngine.UI;
 
 public class SaciController : MonoBehaviour
 {
-    public float speed = 3.0f;
+    public float speed = 5.0f;
     public int health;
     public static int currentHealth;
     public float timeInvincible = 3.0f;
 
     public GameObject Tornado;
-
     bool isInvincible;
     float invincibleTimer;
     float horizontal; 
@@ -145,7 +144,7 @@ public class SaciController : MonoBehaviour
 
         canAttack = false; // Impede novos ataques temporariamente
 
-        yield return new WaitForSeconds(2f); // Espera 1 segundo
+        yield return new WaitForSeconds(1.5f); // Espera 1 segundo
 
         canAttack = true; // Permite novos ataques após o intervalo
     }
