@@ -7,7 +7,7 @@ public class TornadoBehavior : MonoBehaviour
    
     GameObject enemy = null;       
     public float speed = 5.0f;             //Velocidade do movimento
-    float instanceTimer = 4.0f;
+    float instanceTimer = 3.0f;
 
     void Start() {
 
@@ -68,6 +68,9 @@ public class TornadoBehavior : MonoBehaviour
                 Destroy(gameObject);
             }
             
+        }else{
+            if(other.tag == "Wall")
+                Destroy(gameObject);
         }
         
     }

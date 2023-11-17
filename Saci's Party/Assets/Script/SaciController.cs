@@ -145,7 +145,7 @@ public class SaciController : MonoBehaviour
 
         canAttack = false; // Impede novos ataques temporariamente
 
-        yield return new WaitForSeconds(2f); // Espera 1 segundo
+        yield return new WaitForSeconds(1.5f); // Espera 1 segundo
 
         canAttack = true; // Permite novos ataques após o intervalo
     }
