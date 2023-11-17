@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class SaciController : MonoBehaviour
 {
-    public float speed = 3.0f;
+    public float speed = 5.0f;
     public int health;
     public static int currentHealth;
     public float timeInvincible = 3.0f;
 
-    int maxHealth = 1;
+    int maxHealth = 6;
     bool isInvincible;
     float invincibleTimer;
     float horizontal; 
