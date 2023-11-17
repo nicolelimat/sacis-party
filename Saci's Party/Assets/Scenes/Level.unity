@@ -80763,6 +80763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal
       objectReference: {fileID: 0}
+    - target: {fileID: 4285905958143073424, guid: 2db8c58c114bb4823a8df67132a0e998, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4558802587086361164, guid: 2db8c58c114bb4823a8df67132a0e998, type: 3}
       propertyPath: m_LocalScale.x
       value: 5.479238
