@@ -13,6 +13,8 @@ public class MorcegoBehavior : MonoBehaviour
     float timer;
     int direction = 1;
     GameObject player = null;
+    SpriteRenderer spriteRenderer;
+    private Color originalColor;
 
     bool findPlayer = false;
 
@@ -26,6 +28,8 @@ public class MorcegoBehavior : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -65,7 +69,12 @@ public class MorcegoBehavior : MonoBehaviour
         }else{
             if(player != null){
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        }
+            if(transform.position.x - player.transform.position.x < 0){
+                    animator.SetFloat("Move X", 1);
+                }else{
+                    animator.SetFloat("Move X", -1);
+                }
+            }
         }
     }
     
@@ -84,6 +93,7 @@ public class MorcegoBehavior : MonoBehaviour
         if(health == 0){
             Destroy(gameObject);
         }
+        StartCoroutine(FlashRed());
     }
 
     private void Pursuit()
@@ -95,6 +105,18 @@ public class MorcegoBehavior : MonoBehaviour
         }else{
             findPlayer = false;
         }
+    }
+
+    private IEnumerator FlashRed()
+    {
+        // Muda temporariamente a cor do SpriteRenderer para vermelho
+        spriteRenderer.color = Color.red;
+
+        // Aguarda meio segundo
+        yield return new WaitForSeconds(0.1f);
+
+        // Restaura a cor original do SpriteRenderer
+        spriteRenderer.color = originalColor;
     }
 }
 

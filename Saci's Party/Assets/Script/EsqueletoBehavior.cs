@@ -19,6 +19,10 @@ public class EsqueletoBehavior : MonoBehaviour
     float range = 7f;
     
     Animator animator;
+    SpriteRenderer spriteRenderer;
+    private Color originalColor;
+
+    GameObject player = null;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,9 @@ public class EsqueletoBehavior : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
+        player = GameObject.FindGameObjectWithTag("Player");
         
     }
 
@@ -39,27 +46,30 @@ public class EsqueletoBehavior : MonoBehaviour
             timer = changeTime;
         }
 
-        if(canAttack){
-            StartCoroutine(AttackCoroutine());
+        if(canAttack && saciInRange()){
+            canAttack = false;
+            animator.SetBool("Atack",true);
+            
         }
     }
     
     void FixedUpdate()
     {
-        Vector2 position = rigidbody2D.position;
-        
-        if (vertical)
-        {
-            position.y = position.y + Time.deltaTime * speed * direction;
-            animator.SetFloat("Move X", 0);
-        }
-        else
-        {
-            position.x = position.x + Time.deltaTime * speed * direction;
-            animator.SetFloat("Move X", direction);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
+        if(transform.position.x - player.transform.position.x < 0){
+            spriteRenderer.flipX = false;
+            //animator.SetFloat("Move X", 1);
+        }else{
+            spriteRenderer.flipX = true;
+            //animator.SetFloat("Move X", -1);
         }
         
-        rigidbody2D.MovePosition(position);
+    }
+
+    public void Disparo(){
+        animator.SetBool("Atack",false);
+        StartCoroutine(AttackCoroutine());
     }
     
     void OnCollisionEnter2D(Collision2D other)
@@ -77,20 +87,19 @@ public class EsqueletoBehavior : MonoBehaviour
         if(health == 0){
             Destroy(gameObject);
         }
+        StartCoroutine(FlashRed());
     }
 
     IEnumerator AttackCoroutine()
     {
-        if(saciInRange()){
+     
             
-            GameObject novoProjetil = Instantiate(Flecha, transform.position ,Quaternion.identity);
+        GameObject novoProjetil = Instantiate(Flecha, transform.position ,Quaternion.identity);
 
-            canAttack = false; // Impede novos ataques temporariamente
+        yield return new WaitForSeconds(4f); 
 
-            yield return new WaitForSeconds(4f); 
-
-            canAttack = true; // Permite novos ataques após o intervalo
-        }
+        canAttack = true; // Permite novos ataques após o intervalo
+        
     }
 
     private bool saciInRange()
@@ -104,7 +113,17 @@ public class EsqueletoBehavior : MonoBehaviour
         }
         
     }
+    private IEnumerator FlashRed()
+    {
+        // Muda temporariamente a cor do SpriteRenderer para vermelho
+        spriteRenderer.color = Color.red;
 
+        // Aguarda meio segundo
+        yield return new WaitForSeconds(0.1f);
+
+        // Restaura a cor original do SpriteRenderer
+        spriteRenderer.color = originalColor;
+    }
     
 
     
