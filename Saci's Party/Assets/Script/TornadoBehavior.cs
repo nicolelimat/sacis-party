@@ -67,6 +67,12 @@ public class TornadoBehavior : MonoBehaviour
                 speed -= speed;
                 Destroy(gameObject);
             }
+            if(other.gameObject.GetComponent<GatoBehavior>() != null){
+                GatoBehavior target = other.GetComponent<GatoBehavior >();
+                target.Hurt(-1);
+                speed -= speed;
+                Destroy(gameObject);
+            }
             
         }else{
             if(other.tag == "Wall")

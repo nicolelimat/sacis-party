@@ -22,12 +22,14 @@ public class SaciController : MonoBehaviour
     float deathAnimationDuration = 2.5f;
     bool canAttack = true;
     int enemiesInRange = 0;
+    float atackSpeed = 1.5f;
 
     Rigidbody2D rigidbody2d;
     Animator animator;
     Vector2 lookDirection = new Vector2(1,0);
 
     public int maxHealth = 5;
+
 
     public static event Action OnPlayerDeath; // Por ser estático e público, pode ser referenciado em outros scripts
 
@@ -150,7 +152,7 @@ public class SaciController : MonoBehaviour
 
         canAttack = false; // Impede novos ataques temporariamente
 
-        yield return new WaitForSeconds(1.5f); // Espera 1 segundo
+        yield return new WaitForSeconds(atackSpeed); // Espera 1 segundo
 
         canAttack = true; // Permite novos ataques após o intervalo
     }
@@ -170,5 +172,19 @@ public class SaciController : MonoBehaviour
             enemiesInRange --;
 
         }
+    }
+
+
+    public void Boost(){
+        StartCoroutine(BoostCoroutine());
+    }
+
+    IEnumerator BoostCoroutine()
+    {
+        atackSpeed = atackSpeed/2;
+
+        yield return new WaitForSeconds(5); // Espera 1 segundo
+
+        atackSpeed = 2*atackSpeed; 
     }
 }
