@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class PortalTeleporterLevel2 : MonoBehaviour
+public class PortalTeleportLevel2 : MonoBehaviour
 {
     public TextMeshProUGUI mensagemText;
 
