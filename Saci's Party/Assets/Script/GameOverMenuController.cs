@@ -16,7 +16,7 @@ public class GameOverMenuController : MonoBehaviour
     public void PartyHall()
     {
         SceneManager.LoadScene("PartyHall");
-        Time.timeScale = 0;
+        Time.timeScale = 1;
     }
     
 }

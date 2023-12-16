@@ -26,7 +26,7 @@ public class PortalTeleporterLevel : MonoBehaviour
             GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
             if (allEnemies.Length <= 0)
             {
-                SceneManager.LoadScene("WinGame");
+                SceneManager.LoadScene("LevelCabana");
             }
             else
             {

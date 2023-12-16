@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 02406cbb7901f4a1ebf973941c4a12a4
   - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 7262055ec88d345b5bf840418561ef16
+  - enabled: 1
     path: Assets/Scenes/PartyHall.unity
     guid: 763d820b6174c4dc5b063ab4dd37a9b6
   - enabled: 1
