@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro.unity
     guid: 7262055ec88d345b5bf840418561ef16
   - enabled: 1
+    path: Assets/Scenes/LevelCabana.unity
+    guid: f4df921dbd745458eb5f67af98c1f472
+  - enabled: 1
     path: Assets/Scenes/PartyHall.unity
     guid: 763d820b6174c4dc5b063ab4dd37a9b6
   - enabled: 1
